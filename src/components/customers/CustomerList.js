@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 export const CustomerList = () => {
     const [customers, changeCustomers] = useState([])
+    const [totalCustomerMessage, updateMessage] = useState("")
 
     useEffect(
         () => {
@@ -14,11 +15,24 @@ export const CustomerList = () => {
         []
     )
 
+    useEffect(
+        () => {
+            if (customers.length === 1) {
+                updateMessage("You have 1 customer")
+            }
+            else {
+                updateMessage(`You have ${customers.length} customers`)
+            }
+        },
+        [customers]
+    )
+
     return (
         <>
             <h1>Customer List</h1>
+            <div>{totalCustomerMessage}</div>
             {
-                customers.map(
+                customers.slice(0, 5).map(
                     (customerObj) => {
                         return <h3 key={`customer--${customerObj.id}`}>{customerObj.name}</h3>
                     }

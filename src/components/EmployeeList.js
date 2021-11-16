@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 // this function will display the employee list after being imported to Repairs. It does a fetch, event listener, and render html display all in one function.
 export const EmployeeList = () => {
     const [employees, changeEmployees] = useState([])
+    const [employeeSpecialty, updateSpecialty] = useState([])
 
     useEffect(
         () => {
@@ -16,9 +17,21 @@ export const EmployeeList = () => {
         []
     )
 
+    useEffect(
+        () => {
+            const justSpecialties = employees.map(employee => employee.specialty)
+            updateSpecialty(justSpecialties.join(","))
+
+        },
+        [employees]
+    )
+
     return (
         <>
-            <h1>Customer List</h1>
+            <div>
+                Specialties: {employeeSpecialty}
+            </div>
+            <h1>Employee List</h1>
             {
                 employees.map(
                     (employeeObj) => {
