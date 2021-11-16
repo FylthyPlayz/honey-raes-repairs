@@ -31,7 +31,7 @@ export const EmployeeList = () => {
             <div>
                 Specialties: {employeeSpecialty}
             </div>
-            <h1>Employee List</h1>
+            
             {
                 employees.map(
                     (employeeObj) => {
