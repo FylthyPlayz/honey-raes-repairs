@@ -1,30 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import {CustomerList} from "./customers/CustomerList";
+import {EmployeeList} from "./EmployeeList"
 
+// This function is responsible for rendering the html from the imported statements.
 export const Repairs = () => {
-    const [customers, changeCustomers] = useState([])
-
-    useEffect(
-        () => {
-            fetch("http://localhost:8088/customers")
-                .then(res => res.json())
-                .then((customerArray) => {
-                    changeCustomers(customerArray)
-                })
-        },
-        []
-    )
-
     return (
         <>
             <h1>Honey Rae's Repair Shop</h1>
-
-            {
-                customers.map(
-                    (customerObj) => {
-                        return <h2>{customerObj.name}</h2>
-                    }
-                )
-            }
+            <CustomerList />
+            <EmployeeList />
         </>
     )
 }
+// the react framework <> and </> houses JSX code which can do a variety of things in one function with simpler code.
