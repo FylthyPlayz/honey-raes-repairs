@@ -21,7 +21,7 @@ export const TicketList = () => {
                     (ticketObj) => {
                         return <div key={`ticket--${ticketObj.id}`}>
                             <p>{ticketObj.description} submitted by {ticketObj.customer.name} 
-                            and worked on by {ticketObj.employee.name}</p>
+                             and worked on by {ticketObj.employee.name}</p>
                             </div>
                     }
                 )
