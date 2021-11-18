@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-
+import { useHistory } from "react-router"
 
 // this function will display the employee list after being imported to Repairs. It does a fetch, event listener, and render html display all in one function.
 export const EmployeeList = () => {
     const [employees, changeEmployees] = useState([])
     const [employeeSpecialty, updateSpecialty] = useState([])
-
+    const history = useHistory() 
     useEffect(
         () => {
             fetch("http://localhost:8088/employees")
@@ -20,7 +20,7 @@ export const EmployeeList = () => {
     useEffect(
         () => {
             const justSpecialties = employees.map(employee => employee.specialty)
-            updateSpecialty(justSpecialties.join(","))
+            updateSpecialty(justSpecialties.join(", "))
 
         },
         [employees]
@@ -39,6 +39,9 @@ export const EmployeeList = () => {
                     }
                 )
             }
+            <div>
+            <button onClick={() => history.push("/employees/create")}>Hire Employee</button>
+            </div>
         </>
     )
 }

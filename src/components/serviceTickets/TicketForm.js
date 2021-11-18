@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 
 export const TicketForm = () => {
     const [ticket, updateTicket] = useState({
@@ -7,7 +7,7 @@ export const TicketForm = () => {
         emergency: false
     });
 
-    const history = useHistory
+    const history = useHistory()
     const submitTicket = (event) => {
         event.preventDefault()
 
@@ -25,8 +25,7 @@ export const TicketForm = () => {
             },
             body: JSON.stringify(newTicket)
         }
-        return fetch("http://localhost:8088/serviceTickets")
-            .then(response => response.json())
+        return fetch("http://localhost:8088/serviceTickets", fetchOption)
             .then(() => {
                 history.push("/tickets")
             })
@@ -64,7 +63,7 @@ export const TicketForm = () => {
                             }} />
                 </div>
             </fieldset>
-            <button onClick={submitTicket} className="btn btn-primary" onClick={updateTicket}>
+            <button onClick={submitTicket} className="btn btn-primary">
                 Submit Ticket
             </button>
         </form>
