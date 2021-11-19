@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import "./Customers.css" 
 export const CustomerList = () => {
     const [customers, changeCustomers] = useState([])
     const [totalCustomerMessage, updateMessage] = useState("")
@@ -34,7 +34,7 @@ export const CustomerList = () => {
             {
                 customers.slice(0, 5).map(
                     (customerObj) => {
-                        return <h3 key={`customer--${customerObj.id}`}>{customerObj.name}</h3>
+                        return <h3 className="customer" key={`customer--${customerObj.id}`}>{customerObj.name}</h3>
                     }
                 )
             }
