@@ -1,10 +1,11 @@
 import React from "react"
 import { Route } from "react-router-dom"
-import { CustomerList } from "./customers/CustomerList"
-import { EmployeeForm } from "./employees/EmployeeForm"
-import { EmployeeList } from "./employees/EmployeeList"
-import { TicketForm } from "./serviceTickets/TicketForm"
-import { TicketList } from "./serviceTickets/TicketList"
+import { CustomerList } from "./customers/CustomerList";
+import { EmployeeForm } from "./employees/EmployeeForm";
+import { EmployeeList } from "./employees/EmployeeList";
+import { TicketForm } from "./serviceTickets/TicketForm";
+import { TicketList } from "./serviceTickets/TicketList";
+import { Ticket } from "./serviceTickets/Ticket"
 
 
 
@@ -22,6 +23,9 @@ export const ApplicationViews = () => {
             </Route>
             <Route exact path="/tickets">
                 <TicketList />
+            </Route>
+            <Route exact path="/tickets/:ticketId(\d+)">
+                <Ticket />
             </Route>
             <Route path="/tickets/create">
                 <TicketForm />
