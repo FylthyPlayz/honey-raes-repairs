@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router"
+import { useHistory, Link } from "react-router-dom"
 
 // this function will display the employee list after being imported to Repairs. It does a fetch, event listener, and render html display all in one function.
 export const EmployeeList = () => {
@@ -35,7 +35,7 @@ export const EmployeeList = () => {
             {
                 employees.map(
                     (employeeObj) => {
-                        return <h3 key={`employee--${employeeObj.id}`}>{employeeObj.name}</h3>
+                        return <h3 key={`employee--${employeeObj.id}`}><Link to={`/employees/${employeeObj.id}`}>{employeeObj.name}</Link></h3>
                     }
                 )
             }
